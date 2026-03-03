@@ -134,7 +134,15 @@ section {
         gap: 30px;
         padding: 50px 20px;
         transition: right 0.3s ease;
+    
     }
+    /* Dodajemy spójne tło i padding dla aktywnego menu */
+.nav-list.active {
+    right: 0;
+    background: rgba(15,23,42,0.95); /* półprzezroczysty granat */
+    padding: 50px 20px; /* zachowujemy miejsce na linki */
+    border-radius: 12px; /* lekko zaokrąglone rogi */
+}
     .nav-list.active {
         right: 0;
     }
@@ -451,3 +459,4 @@ section {
     .logo-img { height: 35px; margin-right: 10px; }
     .logo { font-size: 18px; }
 }
+
