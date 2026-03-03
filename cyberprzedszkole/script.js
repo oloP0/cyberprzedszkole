@@ -1,22 +1,26 @@
+/* ===================================================== */
 /* ================= GLOBAL VARIABLES ================= */
+/* ===================================================== */
 const header = document.querySelector('.main-header');
 const navLinks = document.querySelectorAll('.nav-list a');
 const accordionButtons = document.querySelectorAll('.accordion-btn');
 const stats = document.querySelectorAll('.stat-card h3');
+const testimonialContainer = document.querySelector('.testimonials-slider');
 const auditForm = document.getElementById('auditForm');
 
-// HAMBURGER MENU
-const hamburger = document.createElement('div');
-hamburger.classList.add('hamburger');
-hamburger.innerHTML = '<span></span><span></span><span></span>';
-document.querySelector('.header-wrapper').appendChild(hamburger);
-const navList = document.querySelector('.nav-list');
+let testimonialIndex = 0;
+let autoSlideInterval = null;
 
-// ================= SMOOTH SCROLL =================
+/* ===================================================== */
+/* ================= SMOOTH SCROLL ===================== */
+/* ===================================================== */
 function scrollToSection(id) {
     const section = document.getElementById(id);
     if (section) {
-        window.scrollTo({ top: section.offsetTop - 80, behavior: 'smooth' });
+        window.scrollTo({
+            top: section.offsetTop - 80,
+            behavior: 'smooth'
+        });
     }
 }
 
@@ -25,16 +29,30 @@ navLinks.forEach(link => {
         e.preventDefault();
         const target = this.getAttribute('href').replace('#', '');
         scrollToSection(target);
-        if (navList.classList.contains('show')) navList.classList.remove('show');
+
+        // Jeśli na telefonie, zamknij menu po kliknięciu
+        const navList = document.querySelector('.nav-list');
+        if (navList.classList.contains('active')) {
+            navList.classList.remove('active');
+        }
     });
 });
 
-// ================= HAMBURGER MENU MOBILE =================
-hamburger.addEventListener('click', () => {
-    navList.classList.toggle('show');
+/* ===================================================== */
+/* ================= MOBILE MENU TOGGLE =============== */
+/* ===================================================== */
+const menuToggle = document.createElement('span');
+menuToggle.classList.add('menu-toggle');
+menuToggle.innerHTML = '☰';
+document.querySelector('.header-wrapper').appendChild(menuToggle);
+
+menuToggle.addEventListener('click', () => {
+    document.querySelector('.nav-list').classList.toggle('active');
 });
 
-// ================= STICKY HEADER =================
+/* ===================================================== */
+/* ================= STICKY HEADER ===================== */
+/* ===================================================== */
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         header.style.padding = '10px 0';
@@ -45,26 +63,42 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ================= FAQ ACCORDION =================
+/* ===================================================== */
+/* ================= FAQ ACCORDION ===================== */
+/* ===================================================== */
 accordionButtons.forEach(button => {
     button.addEventListener('click', function() {
         const content = this.nextElementSibling;
+
+        // Zamknij wszystkie inne FAQ
         accordionButtons.forEach(btn => {
             if (btn !== this) {
                 btn.classList.remove('active');
-                if (btn.nextElementSibling) btn.nextElementSibling.style.maxHeight = null;
+                if (btn.nextElementSibling) {
+                    btn.nextElementSibling.style.maxHeight = null;
+                }
             }
         });
+
+        // Przełącz bieżący FAQ
         this.classList.toggle('active');
-        if (content.style.maxHeight) content.style.maxHeight = null;
-        else content.style.maxHeight = content.scrollHeight + "px";
+
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
     });
 });
 
-// ================= SCROLL ANIMATIONS =================
+/* ===================================================== */
+/* ================= SCROLL ANIMATIONS ================= */
+/* ===================================================== */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
     });
 }, { threshold: 0.2 });
 
@@ -74,38 +108,89 @@ hiddenElements.forEach(el => {
     observer.observe(el);
 });
 
-// ================= COUNT UP STATS =================
+/* ===================================================== */
+/* ================= COUNT UP STATS ==================== */
+/* ===================================================== */
 function animateCount(el, target) {
     let start = 0;
     const duration = 2000;
     const increment = target / (duration / 16);
+
     function update() {
         start += increment;
-        if (start < target) el.textContent = Math.floor(start) + (target === 24 ? '/7' : '%');
-        else el.textContent = target + (target === 24 ? '/7' : '%');
-        if (start < target) requestAnimationFrame(update);
+        if (start < target) {
+            el.textContent = Math.floor(start) + (target === 24 ? '/7' : '%');
+            requestAnimationFrame(update);
+        } else {
+            el.textContent = target + (target === 24 ? '/7' : '%');
+        }
     }
+
     update();
 }
 
 let statsStarted = false;
+
 window.addEventListener('scroll', () => {
     const statsSection = document.querySelector('.stats-section');
     if (!statsSection) return;
+
     const rect = statsSection.getBoundingClientRect();
+
     if (rect.top < window.innerHeight && !statsStarted) {
         statsStarted = true;
-        stats.forEach(stat => animateCount(stat, parseInt(stat.textContent)));
+        stats.forEach(stat => {
+            const value = parseInt(stat.textContent);
+            animateCount(stat, value);
+        });
     }
 });
 
-// ================= FORM VALIDATION =================
+/* ===================================================== */
+/* ================= TESTIMONIAL SLIDER ================ */
+/* ===================================================== */
+function showTestimonial(index) {
+    const testimonials = document.querySelectorAll('.testimonial');
+    testimonials.forEach((item, i) => {
+        item.style.display = i === index ? 'block' : 'none';
+    });
+}
+
+function nextTestimonial() {
+    const testimonials = document.querySelectorAll('.testimonial');
+    testimonialIndex++;
+    if (testimonialIndex >= testimonials.length) {
+        testimonialIndex = 0;
+    }
+    showTestimonial(testimonialIndex);
+}
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(nextTestimonial, 4000);
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
+
+if (testimonialContainer) {
+    showTestimonial(testimonialIndex);
+    startAutoSlide();
+    testimonialContainer.addEventListener('mouseenter', stopAutoSlide);
+    testimonialContainer.addEventListener('mouseleave', startAutoSlide);
+}
+
+/* ===================================================== */
+/* ================= FORM VALIDATION =================== */
+/* ===================================================== */
 if (auditForm) {
     auditForm.addEventListener('submit', function(e) {
         e.preventDefault();
+
         const name = this.name.value.trim();
         const email = this.email.value.trim();
         const school = this.school.value.trim();
+        const message = this.message.value.trim();
         const formMessage = document.getElementById('formMessage');
 
         if (!name || !email || !school) {
@@ -113,6 +198,7 @@ if (auditForm) {
             formMessage.style.color = 'red';
             return;
         }
+
         if (!validateEmail(email)) {
             formMessage.textContent = 'Niepoprawny adres email.';
             formMessage.style.color = 'red';
@@ -121,6 +207,7 @@ if (auditForm) {
 
         formMessage.textContent = 'Wysłano pomyślnie! Skontaktujemy się wkrótce.';
         formMessage.style.color = 'lightgreen';
+
         this.reset();
     });
 }
@@ -130,42 +217,86 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-// ================= BACK TO TOP BUTTON =================
+/* ===================================================== */
+/* ================= BACK TO TOP BUTTON ================ */
+/* ===================================================== */
 const backToTop = document.createElement('button');
 backToTop.textContent = '↑';
-backToTop.classList.add('back-to-top');
+backToTop.style.position = 'fixed';
+backToTop.style.bottom = '30px';
+backToTop.style.right = '30px';
+backToTop.style.padding = '12px 18px';
+backToTop.style.borderRadius = '50%';
+backToTop.style.border = 'none';
+backToTop.style.cursor = 'pointer';
+backToTop.style.display = 'none';
+backToTop.style.background = 'linear-gradient(90deg,#38bdf8,#6366f1)';
+backToTop.style.color = '#fff';
 document.body.appendChild(backToTop);
 
 window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 400 ? 'block' : 'none';
-});
-
-backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-// ================= DARK / LIGHT MODE =================
-const toggleBtn = document.createElement('button');
-toggleBtn.textContent = '☀️';
-toggleBtn.classList.add('dark-light-toggle');
-document.body.appendChild(toggleBtn);
-
-let darkMode = true;
-toggleBtn.addEventListener('click', () => {
-    darkMode = !darkMode;
-    if (darkMode) {
-        document.body.style.background = '#0f172a';
-        document.body.style.color = '#f1f5f9';
-        toggleBtn.textContent = '☀️';
+    if (window.scrollY > 400) {
+        backToTop.style.display = 'block';
     } else {
-        document.body.style.background = '#f1f5f9';
-        document.body.style.color = '#0f172a';
-        toggleBtn.textContent = '🌙';
+        backToTop.style.display = 'none';
     }
 });
 
-// ================= HERO PARALLAX =================
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ===================================================== */
+/* ================= DARK / LIGHT MODE ================= */
+/* ===================================================== */
+const toggleBtn = document.createElement('button');
+toggleBtn.textContent = '☀️';
+toggleBtn.style.position = 'fixed';
+toggleBtn.style.bottom = '30px';
+toggleBtn.style.left = '30px';
+toggleBtn.style.padding = '10px 14px';
+toggleBtn.style.borderRadius = '20px';
+toggleBtn.style.border = 'none';
+toggleBtn.style.cursor = 'pointer';
+document.body.appendChild(toggleBtn);
+
+let darkMode = true;
+
+toggleBtn.addEventListener('click', () => {
+    darkMode = !darkMode;
+
+    if (!darkMode) {
+        document.body.style.background = '#f1f5f9';
+        document.body.style.color = '#0f172a';
+        toggleBtn.textContent = '🌙';
+    } else {
+        document.body.style.background = '#0f172a';
+        document.body.style.color = '#f1f5f9';
+        toggleBtn.textContent = '☀️';
+    }
+});
+
+/* ===================================================== */
+/* ================= HERO PARALLAX ===================== */
+/* ===================================================== */
 window.addEventListener('scroll', () => {
     const hero = document.querySelector('.hero-section');
     if (!hero) return;
+
     const offset = window.pageYOffset;
     hero.style.backgroundPositionY = offset * 0.5 + 'px';
+});
+
+/* ===================================================== */
+/* ================= KEYBOARD NAVIGATION =============== */
+/* ===================================================== */
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+        nextTestimonial();
+    }
+    if (e.key === 'ArrowLeft') {
+        testimonialIndex--;
+        if (testimonialIndex < 0) testimonialIndex = 0;
+        showTestimonial(testimonialIndex);
+    }
 });
