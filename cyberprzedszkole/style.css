@@ -459,4 +459,32 @@ section {
     .logo-img { height: 35px; margin-right: 10px; }
     .logo { font-size: 18px; }
 }
+ /* MOBILE MENU TOGGLE */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+        color: #38bdf8;
+    }
+
+    .nav-list {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: rgba(15,23,42,0.95);
+        flex-direction: column;
+        width: 70%;
+        height: calc(100% - 70px);
+        gap: 30px;
+        padding: 50px 20px;
+        transition: right 0.3s ease;
+        border-radius: 12px;
+        z-index: 9999;
+    }
+
+    .nav-list.active {
+        right: 0;
+    }
+}
 
