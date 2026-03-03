@@ -1,19 +1,59 @@
 /* ===================================================== */
-/* ================= GLOBAL VARIABLES ================= */
+/* ================= FULL JS FOR CYBERPRZEDSZKOLE ===== */
 /* ===================================================== */
-const header = document.querySelector('.main-header');
-const navLinks = document.querySelectorAll('.nav-list a');
-const accordionButtons = document.querySelectorAll('.accordion-btn');
-const stats = document.querySelectorAll('.stat-card h3');
-const testimonialContainer = document.querySelector('.testimonials-slider');
-const auditForm = document.getElementById('auditForm');
 
-let testimonialIndex = 0;
-let autoSlideInterval = null;
+/* ================= MOBILE MENU ======================= */
+const menuToggle = document.createElement('button');
+menuToggle.classList.add('menu-toggle');
+menuToggle.textContent = '☰';
+menuToggle.style.fontSize = '28px';
+menuToggle.style.background = 'transparent';
+menuToggle.style.border = 'none';
+menuToggle.style.color = '#f1f5f9';
+menuToggle.style.cursor = 'pointer';
+menuToggle.style.display = 'none'; // domyślnie niewidoczny na desktopie
+document.querySelector('.header-wrapper').appendChild(menuToggle);
 
-/* ===================================================== */
+const navList = document.querySelector('.nav-list');
+
+function updateMenuDisplay() {
+    if (window.innerWidth <= 900) {
+        menuToggle.style.display = 'block';
+        navList.style.display = 'none';
+        navList.style.flexDirection = 'column';
+        navList.style.position = 'absolute';
+        navList.style.top = '70px';
+        navList.style.right = '20px';
+        navList.style.background = 'rgba(15,23,42,0.95)';
+        navList.style.padding = '20px';
+        navList.style.borderRadius = '12px';
+        navList.style.width = '200px';
+        navList.style.transition = 'all 0.3s ease';
+    } else {
+        menuToggle.style.display = 'none';
+        navList.style.display = 'flex';
+        navList.style.flexDirection = 'row';
+        navList.style.position = 'static';
+        navList.style.background = 'transparent';
+        navList.style.padding = '0';
+        navList.style.width = 'auto';
+    }
+}
+
+window.addEventListener('resize', updateMenuDisplay);
+updateMenuDisplay();
+
+menuToggle.addEventListener('click', () => {
+    if (navList.style.display === 'none') {
+        navList.style.display = 'flex';
+    } else {
+        navList.style.display = 'none';
+    }
+});
+
 /* ================= SMOOTH SCROLL ===================== */
-/* ===================================================== */
+const navLinks = document.querySelectorAll('.nav-list a');
+
 function scrollToSection(id) {
     const section = document.getElementById(id);
     if (section) {
@@ -29,30 +69,14 @@ navLinks.forEach(link => {
         e.preventDefault();
         const target = this.getAttribute('href').replace('#', '');
         scrollToSection(target);
-
-        // Jeśli na telefonie, zamknij menu po kliknięciu
-        const navList = document.querySelector('.nav-list');
-        if (navList.classList.contains('active')) {
-            navList.classList.remove('active');
-        }
+        // Ukryj menu na mobile po kliknięciu
+        if (window.innerWidth <= 900) navList.style.display = 'none';
     });
 });
 
-/* ===================================================== */
-/* ================= MOBILE MENU TOGGLE =============== */
-/* ===================================================== */
-const menuToggle = document.createElement('span');
-menuToggle.classList.add('menu-toggle');
-menuToggle.innerHTML = '☰';
-document.querySelector('.header-wrapper').appendChild(menuToggle);
-
-menuToggle.addEventListener('click', () => {
-    document.querySelector('.nav-list').classList.toggle('active');
-});
-
-/* ===================================================== */
 /* ================= STICKY HEADER ===================== */
-/* ===================================================== */
+const header = document.querySelector('.main-header');
+
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         header.style.padding = '10px 0';
@@ -63,9 +87,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
-/* ===================================================== */
 /* ================= FAQ ACCORDION ===================== */
-/* ===================================================== */
+const accordionButtons = document.querySelectorAll('.accordion-btn');
+
 accordionButtons.forEach(button => {
     button.addEventListener('click', function() {
         const content = this.nextElementSibling;
@@ -74,31 +98,21 @@ accordionButtons.forEach(button => {
         accordionButtons.forEach(btn => {
             if (btn !== this) {
                 btn.classList.remove('active');
-                if (btn.nextElementSibling) {
-                    btn.nextElementSibling.style.maxHeight = null;
-                }
+                if (btn.nextElementSibling) btn.nextElementSibling.style.maxHeight = null;
             }
         });
 
         // Przełącz bieżący FAQ
         this.classList.toggle('active');
-
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
+        if (content.style.maxHeight) content.style.maxHeight = null;
+        else content.style.maxHeight = content.scrollHeight + "px";
     });
 });
 
-/* ===================================================== */
 /* ================= SCROLL ANIMATIONS ================= */
-/* ===================================================== */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('show');
     });
 }, { threshold: 0.2 });
 
@@ -108,9 +122,8 @@ hiddenElements.forEach(el => {
     observer.observe(el);
 });
 
-/* ===================================================== */
 /* ================= COUNT UP STATS ==================== */
-/* ===================================================== */
+const stats = document.querySelectorAll('.stat-card h3');
 function animateCount(el, target) {
     let start = 0;
     const duration = 2000;
@@ -118,25 +131,18 @@ function animateCount(el, target) {
 
     function update() {
         start += increment;
-        if (start < target) {
-            el.textContent = Math.floor(start) + (target === 24 ? '/7' : '%');
-            requestAnimationFrame(update);
-        } else {
-            el.textContent = target + (target === 24 ? '/7' : '%');
-        }
+        if (start < target) el.textContent = Math.floor(start) + (target === 24 ? '/7' : '%');
+        else el.textContent = target + (target === 24 ? '/7' : '%');
+        if (start < target) requestAnimationFrame(update);
     }
-
     update();
 }
 
 let statsStarted = false;
-
 window.addEventListener('scroll', () => {
     const statsSection = document.querySelector('.stats-section');
     if (!statsSection) return;
-
     const rect = statsSection.getBoundingClientRect();
-
     if (rect.top < window.innerHeight && !statsStarted) {
         statsStarted = true;
         stats.forEach(stat => {
@@ -146,22 +152,20 @@ window.addEventListener('scroll', () => {
     }
 });
 
-/* ===================================================== */
-/* ================= TESTIMONIAL SLIDER ================ */
-/* ===================================================== */
+/* ================= TESTIMONIAL SLIDER ================= */
+const testimonialContainer = document.querySelector('.testimonials-slider');
+let testimonialIndex = 0;
+let autoSlideInterval = null;
+
 function showTestimonial(index) {
     const testimonials = document.querySelectorAll('.testimonial');
-    testimonials.forEach((item, i) => {
-        item.style.display = i === index ? 'block' : 'none';
-    });
+    testimonials.forEach((item, i) => item.style.display = i === index ? 'block' : 'none');
 }
 
 function nextTestimonial() {
     const testimonials = document.querySelectorAll('.testimonial');
     testimonialIndex++;
-    if (testimonialIndex >= testimonials.length) {
-        testimonialIndex = 0;
-    }
+    if (testimonialIndex >= testimonials.length) testimonialIndex = 0;
     showTestimonial(testimonialIndex);
 }
 
@@ -180,13 +184,11 @@ if (testimonialContainer) {
     testimonialContainer.addEventListener('mouseleave', startAutoSlide);
 }
 
-/* ===================================================== */
 /* ================= FORM VALIDATION =================== */
-/* ===================================================== */
+const auditForm = document.getElementById('auditForm');
 if (auditForm) {
     auditForm.addEventListener('submit', function(e) {
         e.preventDefault();
-
         const name = this.name.value.trim();
         const email = this.email.value.trim();
         const school = this.school.value.trim();
@@ -198,7 +200,6 @@ if (auditForm) {
             formMessage.style.color = 'red';
             return;
         }
-
         if (!validateEmail(email)) {
             formMessage.textContent = 'Niepoprawny adres email.';
             formMessage.style.color = 'red';
@@ -207,7 +208,6 @@ if (auditForm) {
 
         formMessage.textContent = 'Wysłano pomyślnie! Skontaktujemy się wkrótce.';
         formMessage.style.color = 'lightgreen';
-
         this.reset();
     });
 }
@@ -217,9 +217,7 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-/* ===================================================== */
-/* ================= BACK TO TOP BUTTON ================ */
-/* ===================================================== */
+/* ================= BACK TO TOP BUTTON ================= */
 const backToTop = document.createElement('button');
 backToTop.textContent = '↑';
 backToTop.style.position = 'fixed';
@@ -235,20 +233,11 @@ backToTop.style.color = '#fff';
 document.body.appendChild(backToTop);
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-        backToTop.style.display = 'block';
-    } else {
-        backToTop.style.display = 'none';
-    }
+    backToTop.style.display = window.scrollY > 400 ? 'block' : 'none';
 });
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-/* ===================================================== */
 /* ================= DARK / LIGHT MODE ================= */
-/* ===================================================== */
 const toggleBtn = document.createElement('button');
 toggleBtn.textContent = '☀️';
 toggleBtn.style.position = 'fixed';
@@ -261,10 +250,8 @@ toggleBtn.style.cursor = 'pointer';
 document.body.appendChild(toggleBtn);
 
 let darkMode = true;
-
 toggleBtn.addEventListener('click', () => {
     darkMode = !darkMode;
-
     if (!darkMode) {
         document.body.style.background = '#f1f5f9';
         document.body.style.color = '#0f172a';
@@ -276,24 +263,16 @@ toggleBtn.addEventListener('click', () => {
     }
 });
 
-/* ===================================================== */
 /* ================= HERO PARALLAX ===================== */
-/* ===================================================== */
 window.addEventListener('scroll', () => {
     const hero = document.querySelector('.hero-section');
     if (!hero) return;
-
-    const offset = window.pageYOffset;
-    hero.style.backgroundPositionY = offset * 0.5 + 'px';
+    hero.style.backgroundPositionY = window.pageYOffset * 0.5 + 'px';
 });
 
-/* ===================================================== */
-/* ================= KEYBOARD NAVIGATION =============== */
-/* ===================================================== */
+/* ================= KEYBOARD NAVIGATION ================= */
 window.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') {
-        nextTestimonial();
-    }
+    if (e.key === 'ArrowRight') nextTestimonial();
     if (e.key === 'ArrowLeft') {
         testimonialIndex--;
         if (testimonialIndex < 0) testimonialIndex = 0;
