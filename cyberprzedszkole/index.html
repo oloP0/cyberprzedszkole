@@ -10,13 +10,18 @@
 
 <body>
 
-    <!-- HEADER -->
+    <!-- ========================== HEADER =========================== -->
+
     <header class="main-header">
         <div class="container header-wrapper">
             <img src="/pirtrues/elementologo.png" alt="Logo CyberPrzedszkole" class="logo-img">
             <div class="logo">
                 <span class="logo-main">elemento_Cyber</span><span class="logo-accent">Przedszkole</span>
             </div>
+
+            <!-- HAMBURGER MENU -->
+            <div class="menu-toggle">☰</div>
+
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li><a href="#hero">Start</a></li>
@@ -31,65 +36,138 @@
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- ========================== HERO ============================= -->
+
     <section id="hero" class="hero-section">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 class="hero-title">Bezpieczeństwo IT dla Nowoczesnych Placówek Edukacyjnych</h1>
-            <p class="hero-subtitle">Kompleksowe audyty bezpieczeństwa cyfrowego dla przedszkoli i szkół.</p>
+            <h1 class="hero-title">
+                Bezpieczeństwo IT dla Nowoczesnych Placówek Edukacyjnych
+            </h1>
+            <p class="hero-subtitle">
+                Kompleksowe audyty bezpieczeństwa cyfrowego dla przedszkoli i szkół.
+            </p>
             <div class="hero-buttons">
-                <button class="btn-primary" onclick="scrollToSection('audit')">Zamów darmowy audyt</button>
-                <button class="btn-secondary" onclick="scrollToSection('audit')">Dowiedz się więcej</button>
+                <button class="btn-primary" onclick="scrollToSection('auditForm')">
+                    Zamów darmowy audyt
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('auditForm')">
+                    Dowiedz się więcej
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- O NAS -->
+    <!-- ========================== O NAS ============================ -->
+
     <section id="about" class="about-section">
         <div class="container">
             <h2 class="section-title">O naszej firmie</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>CyberPrzedszkole to zespół ekspertów ds. cyberbezpieczeństwa, którzy specjalizują się w ochronie infrastruktury IT w sektorze edukacyjnym.</p>
-                    <p>Wspieramy dyrektorów placówek w budowaniu bezpiecznego środowiska cyfrowego dla dzieci, rodziców i pracowników.</p>
-                    <p>Nasze działania opieramy na międzynarodowych standardach bezpieczeństwa oraz zgodności z przepisami RODO.</p>
+                    <p>
+                        CyberPrzedszkole to zespół ekspertów ds. cyberbezpieczeństwa, którzy specjalizują się w ochronie infrastruktury IT w sektorze edukacyjnym.
+                    </p>
+                    <p>
+                        Wspieramy dyrektorów placówek w budowaniu bezpiecznego środowiska cyfrowego dla dzieci, rodziców i pracowników.
+                    </p>
+                    <p>
+                        Nasze działania opieramy na międzynarodowych standardach bezpieczeństwa oraz zgodności z przepisami RODO.
+                    </p>
                 </div>
+
                 <div class="about-values">
-                    <div class="value-box"><h3>Doświadczenie</h3><p>Ponad 10 lat pracy w branży cyberbezpieczeństwa.</p></div>
-                    <div class="value-box"><h3>Zaufanie</h3><p>Współpraca z setkami placówek edukacyjnych.</p></div>
-                    <div class="value-box"><h3>Nowoczesność</h3><p>Wykorzystujemy najnowsze technologie zabezpieczeń.</p></div>
+                    <div class="value-box">
+                        <h3>Doświadczenie</h3>
+                        <p>Ponad 10 lat pracy w branży cyberbezpieczeństwa.</p>
+                    </div>
+                    <div class="value-box">
+                        <h3>Zaufanie</h3>
+                        <p>Współpraca z setkami placówek edukacyjnych.</p>
+                    </div>
+                    <div class="value-box">
+                        <h3>Nowoczesność</h3>
+                        <p>Wykorzystujemy najnowsze technologie zabezpieczeń.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- STATYSTYKI -->
+    <!-- ========================== STATYSTYKI ======================= -->
+
     <section class="stats-section">
         <div class="container">
             <h2 class="section-title">Dlaczego to takie ważne?</h2>
             <div class="stats-grid">
-                <div class="stat-card"><h3>78</h3><p>Placówek nie posiada pełnej segmentacji sieci.</p></div>
-                <div class="stat-card"><h3>65</h3><p>Incydentów wynika z błędów ludzkich.</p></div>
-                <div class="stat-card"><h3>24</h3><p>Monitoring infrastruktury po wdrożeniu.</p></div>
-                <div class="stat-card"><h3>100</h3><p>Raportów zawiera konkretne rekomendacje.</p></div>
+                <div class="stat-card">
+                    <h3>78</h3>
+                    <p>Placówek nie posiada pełnej segmentacji sieci.</p>
+                </div>
+                <div class="stat-card">
+                    <h3>65</h3>
+                    <p>Incydentów wynika z błędów ludzkich.</p>
+                </div>
+                <div class="stat-card">
+                    <h3>24</h3>
+                    <p>Monitoring infrastruktury po wdrożeniu.</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100</h3>
+                    <p>Raportów zawiera konkretne rekomendacje.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FILARY -->
+    <!-- ========================== FILARY =========================== -->
+
     <section id="pillars" class="pillars-section">
         <div class="container">
             <h2 class="section-title">4 Filary Bezpieczeństwa</h2>
             <div class="pillar-grid">
-                <div class="pillar-card"><h3>1. Bezpieczeństwo Sieci</h3><p>Firewall, VLAN, monitoring ruchu.</p><ul><li>Segmentacja sieci</li><li>Ochrona przed atakami DDoS</li><li>Monitoring logów</li></ul></div>
-                <div class="pillar-card"><h3>2. Ochrona Danych</h3><p>Szyfrowanie i backup danych.</p><ul><li>Backup codzienny</li><li>Testy odzyskiwania danych</li><li>Polityka haseł</li></ul></div>
-                <div class="pillar-card"><h3>3. Procedury</h3><p>Dokumentacja i zgodność z RODO.</p><ul><li>Polityki bezpieczeństwa</li><li>Instrukcje reagowania</li><li>Audyt zgodności</li></ul></div>
-                <div class="pillar-card"><h3>4. Edukacja Personelu</h3><p>Szkolenia i testy phishingowe.</p><ul><li>Szkolenia online</li><li>Symulacje ataków</li><li>Materiały edukacyjne</li></ul></div>
+                <div class="pillar-card">
+                    <h3>1. Bezpieczeństwo Sieci</h3>
+                    <p>Firewall, VLAN, monitoring ruchu.</p>
+                    <ul>
+                        <li>Segmentacja sieci</li>
+                        <li>Ochrona przed atakami DDoS</li>
+                        <li>Monitoring logów</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <h3>2. Ochrona Danych</h3>
+                    <p>Szyfrowanie i backup danych.</p>
+                    <ul>
+                        <li>Backup codzienny</li>
+                        <li>Testy odzyskiwania danych</li>
+                        <li>Polityka haseł</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <h3>3. Procedury</h3>
+                    <p>Dokumentacja i zgodność z RODO.</p>
+                    <ul>
+                        <li>Polityki bezpieczeństwa</li>
+                        <li>Instrukcje reagowania</li>
+                        <li>Audyt zgodności</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <h3>4. Edukacja Personelu</h3>
+                    <p>Szkolenia i testy phishingowe.</p>
+                    <ul>
+                        <li>Szkolenia online</li>
+                        <li>Symulacje ataków</li>
+                        <li>Materiały edukacyjne</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- AUDYT -->
+    <!-- ========================== PROCES AUDYTU ==================== -->
+
     <section id="audit" class="audit-section">
         <div class="container">
             <h2 class="section-title">Proces Audytu</h2>
@@ -101,6 +179,7 @@
                 <div class="step">5. Opracowanie raportu</div>
                 <div class="step">6. Wsparcie wdrożeniowe</div>
             </div>
+
             <div class="audit-form-wrapper">
                 <h3>Zamów darmowy audyt</h3>
                 <form id="auditForm">
@@ -115,55 +194,87 @@
         </div>
     </section>
 
-    <!-- CASE STUDY -->
+    <!-- ========================== CASE STUDY ======================= -->
+
     <section id="case" class="case-section">
         <div class="container">
             <h2 class="section-title">Case Study</h2>
             <div class="case-grid">
-                <div class="case-card"><h3>Przedszkole nr 12</h3><p>Segmentacja sieci zwiększyła bezpieczeństwo o 60%.</p></div>
-                <div class="case-card"><h3>Przedszkole Słoneczko</h3><p>Wdrożenie backupów chmurowych wyeliminowało ryzyko utraty danych.</p></div>
-                <div class="case-card"><h3>Przedszkole Akademia</h3><p>Szkolenia personelu ograniczyły phishing o 80%.</p></div>
+                <div class="case-card">
+                    <h3>Przedszkole nr 12</h3>
+                    <p>Segmentacja sieci zwiększyła bezpieczeństwo o 60%.</p>
+                </div>
+                <div class="case-card">
+                    <h3>Przedszkole Słoneczko</h3>
+                    <p>Wdrożenie backupów chmurowych wyeliminowało ryzyko utraty danych.</p>
+                </div>
+                <div class="case-card">
+                    <h3>Przedszkole Akademia</h3>
+                    <p>Szkolenia personelu ograniczyły phishing o 80%.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ========================== FAQ ============================== -->
+
     <section id="faq" class="faq-section">
         <div class="container">
             <h2 class="section-title">Najczęściej zadawane pytania</h2>
             <div class="faq-item">
                 <button class="accordion-btn">Czy audyt jest darmowy?</button>
-                <div class="accordion-content"><p>Tak, pierwszy audyt jest bezpłatny.</p></div>
+                <div class="accordion-content">
+                    <p>Tak, pierwszy audyt jest bezpłatny.</p>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="accordion-btn">Ile trwa audyt?</button>
-                <div class="accordion-content"><p>2–3 dni robocze.</p></div>
+                <div class="accordion-content">
+                    <p>2–3 dni robocze.</p>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="accordion-btn">Czy raport zawiera rekomendacje?</button>
-                <div class="accordion-content"><p>Tak, raport zawiera szczegółowe zalecenia.</p></div>
+                <div class="accordion-content">
+                    <p>Tak, raport zawiera szczegółowe zalecenia.</p>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="accordion-btn">Czy pomagacie we wdrożeniu?</button>
-                <div class="accordion-content"><p>Tak, oferujemy pełne wsparcie wdrożeniowe.</p></div>
+                <div class="accordion-content">
+                    <p>Tak, oferujemy pełne wsparcie wdrożeniowe.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- KONTAKT -->
+    <!-- ========================== KONTAKT ========================== -->
+
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Kontakt</h2>
             <div class="contact-grid">
-                <div class="contact-box"><h3>Email</h3><p>elemento@cyberprzedszkole.com</p></div>
-                <div class="contact-box"><h3>Telefon</h3><p>+48 505 421 838</p></div>
-                <div class="contact-box"><h3>Lokalizacja</h3><p>Stanisława Leszczyńskiego 1, 76-200 Słupsk, Polska</p></div>
+                <div class="contact-box">
+                    <h3>Email</h3>
+                    <p>elemento@cyberprzedszkole.com</p>
+                </div>
+                <div class="contact-box">
+                    <h3>Telefon</h3>
+                    <p>+48 505 421 838</p>
+                </div>
+                <div class="contact-box">
+                    <h3>Lokalizacja</h3>
+                    <p>Stanisława Leszczyńskiego 1, 76-200 Słupsk, Polska</p>
+                </div>
             </div>
-            <button class="btn-primary" onclick="scrollToSection('audit')">Zamów audyt teraz</button>
+            <button class="btn-primary" onclick="scrollToSection('audit')">
+                Zamów audyt teraz
+            </button>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ========================== FOOTER =========================== -->
+
     <footer class="footer">
         <div class="container">
             <p>© 2026 CyberPrzedszkole. Wszelkie prawa zastrzeżone.</p>
@@ -172,4 +283,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
