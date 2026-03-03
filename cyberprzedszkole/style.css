@@ -6,6 +6,55 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* ================= HAMBURGER MENU ================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1010;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 25px;
+    background: #38bdf8;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* MOBILE NAVIGATION */
+@media (max-width: 900px) {
+    .nav-list {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100%;
+        background: #0f172a;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 100px 20px;
+        gap: 20px;
+        transition: right 0.3s ease;
+        z-index: 1005;
+    }
+
+    .nav-list.open {
+        right: 0;
+    }
+}
 
 html {
     scroll-behavior: smooth;
@@ -454,3 +503,4 @@ section {
     .audit-form-wrapper { padding: 20px; }
     .case-grid .case-card, .pillar-card, .stat-card { width: 100%; margin: 0 auto; }
 }
+
