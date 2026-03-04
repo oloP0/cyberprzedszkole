@@ -207,3 +207,22 @@ if (searchInput) {
         });
     });
 }
+
+// MOBILE MENU TOGGLE
+const menuToggleBtn = document.querySelector('.menu-toggle');
+const navListMobile = document.querySelector('.nav-list');
+
+if (menuToggleBtn && navListMobile) {
+    menuToggleBtn.addEventListener('click', () => {
+        navListMobile.classList.toggle('active');
+    });
+}
+
+// Zamykanie menu po kliknięciu linku na telefonie
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navListMobile.classList.contains('active')) {
+            navListMobile.classList.remove('active');
+        }
+    });
+});
