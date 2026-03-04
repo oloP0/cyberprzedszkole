@@ -31,7 +31,6 @@ navLinks.forEach(link => {
         if (section) {
             section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        // zamyka menu na telefonie po kliknięciu
         if (navList.classList.contains('active')) {
             navList.classList.remove('active');
         }
@@ -42,7 +41,6 @@ navLinks.forEach(link => {
 /* ===================================================== */
 /* ================= STICKY HEADER ===================== */
 /* ===================================================== */
-
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         header.style.padding = '10px 0';
@@ -56,7 +54,6 @@ window.addEventListener('scroll', () => {
 /* ===================================================== */
 /* ================= FAQ ACCORDION ===================== */
 /* ===================================================== */
-
 accordionButtons.forEach(button => {
     button.addEventListener('click', function() {
         const content = this.nextElementSibling;
@@ -75,7 +72,6 @@ accordionButtons.forEach(button => {
 /* ===================================================== */
 /* ================= SCROLL ANIMATIONS ================= */
 /* ===================================================== */
-
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('show');
@@ -91,7 +87,6 @@ hiddenElements.forEach(el => {
 /* ===================================================== */
 /* ================= COUNT UP STATS ==================== */
 /* ===================================================== */
-
 function animateCount(el, target) {
     let start = 0;
     const duration = 2000;
@@ -103,7 +98,6 @@ function animateCount(el, target) {
         else el.textContent = target + (target === 24 ? '/7' : '%');
         if (start < target) requestAnimationFrame(update);
     }
-
     update();
 }
 
@@ -125,7 +119,6 @@ window.addEventListener('scroll', () => {
 /* ===================================================== */
 /* ================= FORM VALIDATION =================== */
 /* ===================================================== */
-
 if (auditForm) {
     auditForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -161,7 +154,6 @@ function validateEmail(email) {
 /* ===================================================== */
 /* ================= BACK TO TOP BUTTON ================ */
 /* ===================================================== */
-
 const backToTop = document.createElement('button');
 backToTop.textContent = '↑';
 backToTop.style.position = 'fixed';
@@ -187,7 +179,6 @@ backToTop.addEventListener('click', () => {
 /* ===================================================== */
 /* ================= DARK / LIGHT MODE ================= */
 /* ===================================================== */
-
 const toggleBtn = document.createElement('button');
 toggleBtn.textContent = '☀️';
 toggleBtn.style.position = 'fixed';
@@ -211,4 +202,31 @@ toggleBtn.addEventListener('click', () => {
         document.body.style.color = '#f1f5f9';
         toggleBtn.textContent = '☀️';
     }
+});
+
+/* ===================================================== */
+/* ================= SEARCH ENGINE ==================== */
+/* ===================================================== */
+const searchInput = document.createElement('input');
+searchInput.type = 'text';
+searchInput.placeholder = 'Szukaj sekcji...';
+searchInput.style.position = 'fixed';
+searchInput.style.top = '80px';
+searchInput.style.right = '20px';
+searchInput.style.padding = '10px';
+searchInput.style.borderRadius = '10px';
+searchInput.style.border = 'none';
+searchInput.style.zIndex = '999';
+searchInput.style.width = '200px';
+document.body.appendChild(searchInput);
+
+searchInput.addEventListener('keyup', function(e) {
+    const query = e.target.value.toLowerCase();
+    navLinks.forEach(link => {
+        const targetId = link.getAttribute('href').replace('#','');
+        const section = document.getElementById(targetId);
+        if (section && targetId.includes(query)) {
+            section.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+    });
 });
