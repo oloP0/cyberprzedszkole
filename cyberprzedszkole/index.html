@@ -3,24 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>CyberPrzedszkole – Audyty Bezpieczeństwa IT dla Edukacji</title>
-
     <meta name="description" content="Profesjonalne audyty bezpieczeństwa IT dla przedszkoli i szkół. Ochrona danych, segmentacja sieci, zgodność z RODO. Zamów darmowy audyt.">
-    <meta name="keywords" content="audyt IT przedszkole, cyberbezpieczeństwo szkoła, RODO edukacja">
+    <meta name="keywords" content="audyt IT przedszkole, cyberbezpieczeństwo szkoła, RODO edukacja, szkolenia IT">
     <meta name="author" content="CyberPrzedszkole">
     <meta name="robots" content="index, follow">
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <!-- ================= HEADER ================= -->
-
 <header class="main-header">
     <div class="container header-wrapper">
-
         <div style="display:flex; align-items:center;">
             <img src="/pirtrues/elementologo.png" alt="Logo CyberPrzedszkole" class="logo-img">
             <div class="logo">
@@ -42,20 +36,23 @@
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
         </nav>
-
     </div>
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- ================= SEARCH ENGINE ================= -->
+<section id="search-engine" class="search-section">
+    <div class="container">
+        <h2 class="section-title">Wyszukaj w naszej stronie</h2>
+        <input type="text" id="siteSearch" placeholder="Wpisz słowo np. 'kontakt', 'audyt'">
+        <ul id="searchResults" class="search-results"></ul>
+    </div>
+</section>
 
+<!-- ================= HERO ================= -->
 <section id="hero" class="hero-section">
     <div class="container">
-        <h1 class="hero-title">
-            Bezpieczeństwo IT dla Nowoczesnych Placówek Edukacyjnych
-        </h1>
-        <p class="hero-subtitle">
-            Kompleksowe audyty bezpieczeństwa cyfrowego dla przedszkoli i szkół.
-        </p>
+        <h1 class="hero-title">Bezpieczeństwo IT dla Nowoczesnych Placówek Edukacyjnych</h1>
+        <p class="hero-subtitle">Kompleksowe audyty bezpieczeństwa cyfrowego dla przedszkoli i szkół.</p>
         <button class="btn-primary" onclick="document.getElementById('audit').scrollIntoView({behavior:'smooth'})">
             Zamów darmowy audyt
         </button>
@@ -63,102 +60,54 @@
 </section>
 
 <!-- ================= O NAS ================= -->
-
 <section id="about">
     <div class="container">
         <h2 class="section-title">O naszej firmie</h2>
-
         <div class="about-grid">
-
             <div>
-                <p>
-                    CyberPrzedszkole to zespół ekspertów ds. cyberbezpieczeństwa,
-                    specjalizujący się w ochronie infrastruktury IT w sektorze edukacyjnym.
-                </p>
-                <br>
-                <p>
-                    Wspieramy dyrektorów w budowaniu bezpiecznego środowiska cyfrowego
-                    dla dzieci, rodziców i pracowników.
-                </p>
+                <p>CyberPrzedszkole to zespół doświadczonych specjalistów w dziedzinie cyberbezpieczeństwa. Od 2013 roku pomagamy przedszkolom i szkołom chronić dane uczniów, personelu oraz rodziców.</p>
+                <p>Nasze rozwiązania obejmują audyty infrastruktury IT, wdrażanie segmentacji sieci, backupy chmurowe, szkolenia personelu oraz testy phishingowe.</p>
+                <p>Dzięki współpracy z placówkami edukacyjnymi w całej Polsce zdobyliśmy doświadczenie, które pozwala nam oferować kompleksowe i skuteczne rozwiązania.</p>
             </div>
-
             <div class="value-box">
                 <h3>10+ lat doświadczenia</h3>
-                <p>Setki wdrożeń i audytów bezpieczeństwa w sektorze edukacji.</p>
+                <p>Setki wdrożeń, audytów i szkoleń w sektorze edukacji.</p>
+                <p>Współpracujemy z dyrektorami placówek, zapewniając bezpieczeństwo danych i zgodność z RODO.</p>
             </div>
-
         </div>
     </div>
 </section>
 
 <!-- ================= STATYSTYKI ================= -->
-
 <section>
     <div class="container">
         <h2 class="section-title">Dlaczego to ważne?</h2>
-
         <div class="stats-grid">
-            <div class="stat-card">
-                <h3>78%</h3>
-                <p>Placówek nie ma pełnej segmentacji sieci.</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>65%</h3>
-                <p>Incydentów wynika z błędów ludzkich.</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>24/7</h3>
-                <p>Monitoring infrastruktury.</p>
-            </div>
-
-            <div class="stat-card">
-                <h3>100%</h3>
-                <p>Raportów zawiera konkretne rekomendacje.</p>
-            </div>
+            <div class="stat-card"><h3>78%</h3><p>Placówek nie ma pełnej segmentacji sieci.</p></div>
+            <div class="stat-card"><h3>65%</h3><p>Incydentów wynika z błędów ludzkich.</p></div>
+            <div class="stat-card"><h3>24/7</h3><p>Monitoring infrastruktury.</p></div>
+            <div class="stat-card"><h3>100%</h3><p>Raportów zawiera konkretne rekomendacje.</p></div>
         </div>
     </div>
 </section>
 
 <!-- ================= FILARY ================= -->
-
 <section id="pillars">
     <div class="container">
         <h2 class="section-title">4 Filary Bezpieczeństwa</h2>
-
         <div class="pillar-grid">
-
-            <div class="pillar-card">
-                <h3>1. Bezpieczeństwo Sieci</h3>
-                <p>Firewall, VLAN, monitoring ruchu.</p>
-            </div>
-
-            <div class="pillar-card">
-                <h3>2. Ochrona Danych</h3>
-                <p>Szyfrowanie i backup danych.</p>
-            </div>
-
-            <div class="pillar-card">
-                <h3>3. Procedury</h3>
-                <p>Dokumentacja i zgodność z RODO.</p>
-            </div>
-
-            <div class="pillar-card">
-                <h3>4. Edukacja Personelu</h3>
-                <p>Szkolenia i testy phishingowe.</p>
-            </div>
-
+            <div class="pillar-card"><h3>1. Bezpieczeństwo Sieci</h3><p>Firewall, VLAN, monitoring ruchu, segmentacja sieci.</p></div>
+            <div class="pillar-card"><h3>2. Ochrona Danych</h3><p>Szyfrowanie, backupy, testy odzyskiwania danych.</p></div>
+            <div class="pillar-card"><h3>3. Procedury</h3><p>Polityki bezpieczeństwa, instrukcje reagowania, audyt zgodności z RODO.</p></div>
+            <div class="pillar-card"><h3>4. Edukacja Personelu</h3><p>Szkolenia online, testy phishingowe, materiały edukacyjne.</p></div>
         </div>
     </div>
 </section>
 
 <!-- ================= AUDYT ================= -->
-
 <section id="audit">
     <div class="container">
         <h2 class="section-title">Zamów darmowy audyt</h2>
-
         <div class="audit-form-wrapper">
             <form id="auditForm">
                 <input type="text" name="name" placeholder="Imię i nazwisko" required>
@@ -173,70 +122,69 @@
 </section>
 
 <!-- ================= CASE ================= -->
-
 <section id="case">
     <div class="container">
         <h2 class="section-title">Case Study</h2>
-
         <div class="case-grid">
-            <div class="case-card">
-                <h3>Przedszkole nr 12</h3>
-                <p>Segmentacja sieci zwiększyła bezpieczeństwo o 60%.</p>
-            </div>
-
-            <div class="case-card">
-                <h3>Przedszkole Słoneczko</h3>
-                <p>Wdrożenie backupów wyeliminowało ryzyko utraty danych.</p>
-            </div>
-
-            <div class="case-card">
-                <h3>Przedszkole Akademia</h3>
-                <p>Szkolenia ograniczyły phishing o 80%.</p>
-            </div>
+            <div class="case-card"><h3>Przedszkole nr 12</h3><p>Segmentacja sieci zwiększyła bezpieczeństwo o 60%.</p></div>
+            <div class="case-card"><h3>Przedszkole Słoneczko</h3><p>Backupy chmurowe wyeliminowały ryzyko utraty danych.</p></div>
+            <div class="case-card"><h3>Przedszkole Akademia</h3><p>Szkolenia ograniczyły phishing o 80%.</p></div>
         </div>
     </div>
 </section>
 
 <!-- ================= FAQ ================= -->
-
 <section id="faq">
     <div class="container">
         <h2 class="section-title">FAQ</h2>
-
-        <div class="stat-card">
-            <h3>Czy audyt jest darmowy?</h3>
-            <p>Tak, pierwszy audyt jest bezpłatny.</p>
+        <div class="faq-item">
+            <button class="accordion-btn">Czy audyt jest darmowy?</button>
+            <div class="accordion-content"><p>Tak, pierwszy audyt jest bezpłatny.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion-btn">Ile trwa audyt?</button>
+            <div class="accordion-content"><p>2–3 dni robocze w zależności od wielkości placówki.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion-btn">Czy raport zawiera rekomendacje?</button>
+            <div class="accordion-content"><p>Tak, raport zawiera szczegółowe zalecenia i wskazówki wdrożeniowe.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion-btn">Czy pomagacie we wdrożeniu?</button>
+            <div class="accordion-content"><p>Tak, oferujemy pełne wsparcie wdrożeniowe.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion-btn">Czy szkolenia są online?</button>
+            <div class="accordion-content"><p>Tak, wszystkie szkolenia można realizować online.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion-btn">Czy testy phishingowe są bezpieczne?</button>
+            <div class="accordion-content"><p>Tak, symulacje są kontrolowane i nie zagrażają bezpieczeństwu systemu.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion-btn">Jak często wykonywać audyt?</button>
+            <div class="accordion-content"><p>Rekomendujemy minimum raz w roku lub po każdej większej zmianie infrastruktury.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="accordion-btn">Czy mogę zmienić zakres audytu?</button>
+            <div class="accordion-content"><p>Tak, audyt jest dopasowywany do potrzeb placówki.</p></div>
         </div>
     </div>
 </section>
 
 <!-- ================= KONTAKT ================= -->
-
 <section id="contact">
     <div class="container">
         <h2 class="section-title">Kontakt</h2>
-
         <div class="contact-grid">
-            <div class="contact-box">
-                <h3>Email</h3>
-                <p>elemento@cyberprzedszkole.com</p>
-            </div>
-
-            <div class="contact-box">
-                <h3>Telefon</h3>
-                <p>+48 505 421 838</p>
-            </div>
-
-            <div class="contact-box">
-                <h3>Lokalizacja</h3>
-                <p>Słupsk, Polska</p>
-            </div>
+            <div class="contact-box"><h3>Email</h3><p>elemento@cyberprzedszkole.com</p></div>
+            <div class="contact-box"><h3>Telefon</h3><p>+48 505 421 838</p></div>
+            <div class="contact-box"><h3>Lokalizacja</h3><p>Słupsk, Polska</p></div>
         </div>
     </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-
 <footer class="footer">
     <div class="container">
         <p>© 2026 CyberPrzedszkole. Wszelkie prawa zastrzeżone.</p>
