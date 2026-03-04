@@ -422,3 +422,39 @@ section {
     .logo-img { height: 35px; margin-right: 10px; }
     .logo { font-size: 18px; }
 }
+/* MOBILE MENU TOGGLE */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #38bdf8;
+    z-index: 1100;
+}
+
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-list {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: #0f172a;
+        flex-direction: column;
+        width: 70%;
+        height: calc(100% - 70px);
+        gap: 30px;
+        padding: 50px 20px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+
+    .nav-list.active {
+        right: 0;
+    }
+
+    .nav-list li {
+        margin-bottom: 20px;
+    }
+}
