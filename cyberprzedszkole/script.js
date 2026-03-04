@@ -9,9 +9,9 @@ const menuToggle = document.querySelector('.menu-toggle');
 const accordionButtons = document.querySelectorAll('.accordion-btn');
 const stats = document.querySelectorAll('.stat-card h3');
 const auditForm = document.getElementById('auditForm');
+const searchInput = document.getElementById('siteSearch');
+const searchResults = document.getElementById('searchResults');
 
-let testimonialIndex = 0;
-let autoSlideInterval = null;
 let darkMode = true;
 
 /* ===================================================== */
@@ -31,10 +31,7 @@ navLinks.forEach(link => {
         if (section) {
             section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        // zamyka menu na telefonie po kliknięciu
-        if (navList.classList.contains('active')) {
-            navList.classList.remove('active');
-        }
+        if (navList.classList.contains('active')) navList.classList.remove('active');
         e.preventDefault();
     });
 });
@@ -89,40 +86,6 @@ hiddenElements.forEach(el => {
 });
 
 /* ===================================================== */
-/* ================= COUNT UP STATS ==================== */
-/* ===================================================== */
-
-function animateCount(el, target) {
-    let start = 0;
-    const duration = 2000;
-    const increment = target / (duration / 16);
-
-    function update() {
-        start += increment;
-        if (start < target) el.textContent = Math.floor(start) + (target === 24 ? '/7' : '%');
-        else el.textContent = target + (target === 24 ? '/7' : '%');
-        if (start < target) requestAnimationFrame(update);
-    }
-
-    update();
-}
-
-let statsStarted = false;
-
-window.addEventListener('scroll', () => {
-    const statsSection = document.querySelector('.stats-section');
-    if (!statsSection || statsStarted) return;
-    const rect = statsSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-        statsStarted = true;
-        stats.forEach(stat => {
-            const value = parseInt(stat.textContent);
-            animateCount(stat, value);
-        });
-    }
-});
-
-/* ===================================================== */
 /* ================= FORM VALIDATION =================== */
 /* ===================================================== */
 
@@ -140,7 +103,6 @@ if (auditForm) {
             formMessage.style.color = 'red';
             return;
         }
-
         if (!validateEmail(email)) {
             formMessage.textContent = 'Niepoprawny adres email.';
             formMessage.style.color = 'red';
@@ -201,7 +163,6 @@ document.body.appendChild(toggleBtn);
 
 toggleBtn.addEventListener('click', () => {
     darkMode = !darkMode;
-
     if (!darkMode) {
         document.body.style.background = '#f1f5f9';
         document.body.style.color = '#0f172a';
@@ -212,3 +173,37 @@ toggleBtn.addEventListener('click', () => {
         toggleBtn.textContent = '☀️';
     }
 });
+
+/* ===================================================== */
+/* ================= SEARCH ENGINE ==================== */
+/* ===================================================== */
+
+if (searchInput) {
+    const sections = [...document.querySelectorAll('section')].map(sec => ({
+        id: sec.id,
+        title: sec.querySelector('.section-title')?.innerText || '',
+        text: sec.innerText.toLowerCase()
+    }));
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        searchResults.innerHTML = '';
+        if (!query) return;
+
+        sections.forEach(sec => {
+            if (sec.text.includes(query) || sec.title.toLowerCase().includes(query)) {
+                const li = document.createElement('li');
+                li.textContent = sec.title || sec.id;
+                li.style.cursor = 'pointer';
+                li.style.padding = '5px 0';
+                li.addEventListener('click', () => {
+                    const targetSection = document.getElementById(sec.id);
+                    if (targetSection) targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    searchResults.innerHTML = '';
+                    searchInput.value = '';
+                });
+                searchResults.appendChild(li);
+            }
+        });
+    });
+}
