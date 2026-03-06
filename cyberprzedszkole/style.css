@@ -33,6 +33,7 @@ body {
     color: var(--color-light);
     line-height: 1.6;
     font-size: 16px;
+    font-display: swap;
 }
 
 .container {
@@ -78,6 +79,7 @@ a {
     width: 90px;
     border-radius: 32px;
     height: auto;
+    aspect-ratio: 1;
 }
 
 .logo-text {
