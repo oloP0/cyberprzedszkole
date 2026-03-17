@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REN-Serwis - Serwis samochodowy</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#38bdf8" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+</head>
+<body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+
+    // PWA install prompt as soon as possible
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      // Show prompt immediately
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+      });
+    });
+  </script>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">REN-Serwis</a>
+      <nav class="main-nav" aria-label="Główne menu">
+        <a href="#appointment">Umów wizytę</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Pokaż menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-background" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-content" data-reveal>
+          <p class="badge">Mobilny serwis • Pełna gwarancja • Dojazd do klienta</p>
+          <h1>Serwis samochodowy z dojazdem</h1>
+          <p>Czas to pieniądz – zadzwoń, a nasz mobilny zespół przyjedzie i zajmie się Twoim autem w dogodnym terminie.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#appointment">Umów wizytę</a>
+            <a class="btn btn-ghost" href="#" aria-label="Pusty przycisk">&nbsp;</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true" data-reveal>
+          <svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustracja samochodu">
+            <defs>
+              <linearGradient id="carGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#0f172a" stop-opacity="0.8" />
+              </linearGradient>
+            </defs>
+            <path d="M52 260c0 20 16 36 36 36h460c20 0 36-16 36-36v-100c0-22-18-40-40-40H92c-22 0-40 18-40 40v100Z" fill="url(#carGrad)" opacity="0.95"/>
+            <path d="M90 200h420" stroke="rgba(255,255,255,0.35)" stroke-width="8" stroke-linecap="round" />
+            <circle cx="160" cy="280" r="24" fill="#0f172a" stroke="#38bdf8" stroke-width="10" />
+            <circle cx="520" cy="280" r="24" fill="#0f172a" stroke="#38bdf8" stroke-width="10" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" id="why">
+      <div class="container">
+        <h2>Dlaczego warto wybrać REN‑Serwis?</h2>
+        <p class="lead">Nie jesteśmy kolejnym warsztatem. Stawiamy na szybkość, przejrzystość kosztów i serwis bez ukrytych niespodzianek.</p>
+        <div class="why-grid">
+          <article class="why-card" data-reveal>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 12c11 0 20 9 20 20s-9 20-20 20S12 43 12 32s9-20 20-20Z" fill="#38bdf8" opacity="0.15"/>
+                <path d="M24 28l6 6 10-10" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Transparentne ceny</h3>
+            <p>Przed rozpoczęciem prac podajemy konkretną wycenę i czas realizacji – zero niespodzianek przy odbiorze.</p>
+          </article>
+          <article class="why-card" data-reveal>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 10c12 0 22 10 22 22s-10 22-22 22S10 44 10 32 20 10 32 10Z" fill="#38bdf8" opacity="0.15"/>
+                <path d="M20 33l12 9 16-24" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Serwis w dogodnym miejscu</h3>
+            <p>Nie musisz tracić dnia na dojazd do warsztatu – przyjedziemy tam, gdzie stoi Twój samochód.</p>
+          </article>
+          <article class="why-card" data-reveal>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 10c11 0 20 9 20 20s-9 20-20 20-20-9-20-20 9-20 20-20Z" fill="#38bdf8" opacity="0.15"/>
+                <path d="M24 32h16" stroke="#0f172a" stroke-width="4" stroke-linecap="round"/>
+                <path d="M32 24v16" stroke="#0f172a" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Gwarancja i wsparcie</h3>
+            <p>Na każdą usługę oferujemy gwarancję, a w razie wątpliwości zawsze możesz do nas zadzwonić.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="appointment" id="appointment">
+      <div class="container">
+        <h2>Umów wizytę</h2>
+        <p>Wypełnij formularz, a skontaktujemy się z Tobą, aby potwierdzić termin.</p>
+        <form id="appointmentForm" class="form" novalidate>
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Imię i nazwisko</span>
+              <input type="text" name="name" required placeholder="Jan Kowalski" />
+            </label>
+            <label class="form-field">
+              <span>Telefon</span>
+              <input type="tel" name="phone" required placeholder="123 456 789" />
+            </label>
+            <label class="form-field">
+              <span>E‑mail</span>
+              <input type="email" name="email" required placeholder="jan@przyklad.pl" />
+            </label>
+            <label class="form-field">
+              <span>Marka i model</span>
+              <input type="text" name="car" required placeholder="Toyota Corolla" />
+            </label>
+            <label class="form-field">
+              <span>Usługa</span>
+              <select name="service" required>
+            <option value="">Wybierz usługę</option>
+                        <option value="service">Serwis okresowy</option>
+                        <option value="mechanical">Naprawa mechaniczna</option>
+                        <option value="diagnostics">Diagnostyka pojazdu</option>
+                        <option value="brakes">Układ hamulcowy</option>
+                        <option value="suspension">Zawieszenie i układ kierowniczy</option>
+                        <option value="electrics">Elektryka samochodowa</option>
+                        <option value="ac">Klimatyzacja</option>
+                        <option value="tires">Wulkanizacja / opony</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>Preferowany termin</span>
+              <input type="datetime-local" name="date" required />
+            </label>
+            <label class="form-field form-field--full">
+              <span>Uwagi / dodatkowe informacje</span>
+              <textarea name="notes" rows="4" placeholder="Należy podać np. nr rejestracyjny lub problem."></textarea>
+            </label>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Wyślij zgłoszenie</button>
+            <p class="form-info">Opiekun skontaktuje się w ciągu 24 godzin roboczych.</p>
+          </div>
+          <div id="formMessage" class="form-message" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-inner">
+        <div class="contact-info">
+          <h2>Kontakt</h2>
+          <p>Masz pytania? Napisz lub zadzwoń — chętnie pomożemy.</p>
+          <ul class="contact-list">
+            <li><strong>Telefon:</strong> <a href="tel:+48123456789">+48 123 456 789</a></li>
+            <li><strong>Email:</strong> <a href="mailto:kontakt@renserwis.pl">kontakt@renserwis.pl</a></li>
+            <li><strong>Adres:</strong> ul. Warsztatowa 12, 00-100 Warszawa</a></li>
+          </ul>
+        </div>
+        <div class="contact-map">
+          <div class="map-placeholder" aria-hidden="true">Mapa (tu można dodać osadzenie mapy)</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="contact-float" href="#appointment" aria-label="Asystent">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7l-5 4V6a2 2 0 0 1 2-2z" opacity="0.9"/>
+      <circle cx="9" cy="11" r="1.25" fill="white"/>
+      <circle cx="12" cy="11" r="1.25" fill="white"/>
+      <circle cx="15" cy="11" r="1.25" fill="white"/>
+    </svg>
+    Asystent
+  </a>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="currentYear"></span> RENAULT Serwis opaliński
+      <p class="small">Strona demonstracyjna. Dane kontaktowe są przykładowe.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
