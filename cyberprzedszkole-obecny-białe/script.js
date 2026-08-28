@@ -1,4 +1,3 @@
-/* ================= MOBILE MENU ================= */
 
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /* ================= FAQ ACCORDION ================= */
     const faqBtns = document.querySelectorAll('.faq-btn');
 
     faqBtns.forEach(btn => {
@@ -29,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const faqItem = this.closest('.faq-item');
             const isOpen = faqItem.classList.contains('open');
 
-            // Zamknij wszystkie inne elementy FAQ
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.classList.remove('open');
             });
@@ -37,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.setAttribute('aria-expanded', 'false');
             });
 
-            // Otwórz / zamknij aktualny
             if (!isOpen) {
                 faqItem.classList.add('open');
                 this.setAttribute('aria-expanded', 'true');
@@ -45,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Rejestracja Service Workera (PWA)
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
             .then(reg => console.log('Service Worker zarejestrowany:', reg.scope))
@@ -53,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-/* ================= FORM HANDLING ================= */
 
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
@@ -81,7 +75,7 @@ if (contactForm) {
         }
 
         const auditEmail = 'audyt@cyberprzedszkole.com';
-        const backendApi = ''; // Wstaw URL API jeśli posiadasz (np. https://twojadomena.pl/api/audit)
+        const backendApi = ''; // na obecna chwile brak 
         const messageText = `Imię i nazwisko: ${name}\nEmail: ${email}\nTelefon: ${phone}\nNazwa placówki: ${organization}\nWiadomość: ${this.message.value.trim()}`;
 
         if (backendApi) {
@@ -147,7 +141,6 @@ function showFormMessage(message, type, element) {
     }, 5000);
 }
 
-/* ================= BACK TO TOP BUTTON ================= */
 
 const backToTopBtn = document.getElementById('backToTop');
 
@@ -166,7 +159,6 @@ backToTopBtn.addEventListener('click', () => {
     });
 });
 
-/* ================= SMOOTH SCROLL FOR ANCHOR LINKS ================= */
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -180,7 +172,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-/* ================= SCROLL ANIMATIONS ================= */
 
 const observerOptions = {
     threshold: 0.1,
@@ -203,7 +194,6 @@ document.querySelectorAll('.process-card, .pillar, .testimonial, .contact-info')
     observer.observe(el);
 });
 
-/* ================= BLOG ARTICLE EXPAND/COLLAPSE ================= */
 document.querySelectorAll('.read-more-btn').forEach(button => {
     button.addEventListener('click', () => {
         const article = button.closest('.article');
@@ -219,7 +209,6 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
     });
 });
 
-/* ================= FAQ ACCORDION ================= */
 function setupFaqAccordion() {
     const items = document.querySelectorAll('.faq-section .faq-item');
 
@@ -240,7 +229,6 @@ function setupFaqAccordion() {
         heading.style.cursor = 'pointer';
         heading.addEventListener('click', toggle);
 
-        // otwórz też przy kliknięciu w tło pytania
         item.addEventListener('click', (event) => {
             if (event.target.closest('h3') || event.target.closest('p')) return;
             toggle();
