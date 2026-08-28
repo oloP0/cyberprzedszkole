@@ -1,154 +1,37 @@
-# ELEMENTO CyberPrzedszkole – Profesjonalna Strona B2B
+CyberPrzedszkole
 
-## 📋 Spełnione Wymagania Checklesty ELEMENTO
+CyberPrzedszkole to projekt strony internetowej, który wykonałem podczas praktyk zawodowych w 3 klasie technikum dla sklepu Elemento. Był to jeden z moich pierwszych projektów wykonywanych dla rzeczywistego klienta, dlatego zależało mi nie tylko na wyglądzie strony, ale również na jej funkcjonalności, responsywności i poprawnym działaniu.
 
-### 1. ✅ Design & UI (Inspiracja Gigantami)
-- **Minimalizm & Przestrzeń (Apple Style)**
-  - Duże białe przestrzenie (white space)
-  - Czysty, nowoczesny design
-  - Duże, czytelne nagłówki
-  - Odpowiednie marginesy i padding
-  
-- **Technologia & Dynamika (Dark Mode)**
-  - Profesjonalny ciemny motyw
-  - Kolory: Błękit (#0ea5e9), Biały (#f8fafc), Granat (#1e40af)
-  - Ostre linie i nowoczesne komponenty
+Strona została zaprojektowana w nowoczesnym stylu, z wykorzystaniem ciemnego motywu oraz niebieskiej kolorystyki. Zależało mi na tym, żeby strona była przejrzysta i wygodna w korzystaniu zarówno na komputerze, jak i na telefonie.
 
-- **Spójność Typograficzna**
-  - Maksymalnie 2 rodzaje czcionek:
-    - Systemowa czcionka sans-serif do tekstu
-    - Wagi: 500, 600, 700 dla hierarchii
-  - Nagłówki "krzyczeć" korzyściami
+Co znajduje się w projekcie?
 
-- **Favicon**
-  - Dodane: `<link rel="icon" type="image/png" href="/pirtrues/favicon.png">`
+Na stronie głównej znajduje się sekcja powitalna z najważniejszymi informacjami o projekcie oraz przyciskiem zachęcającym do kontaktu. Następnie znajdują się sekcje opisujące działalność, proces działania oraz najważniejsze obszary związane z bezpieczeństwem IT.
 
-### 2. ✅ Content & UX (Doświadczenie Użytkownika)
-- **Unique Selling Proposition (USP)**
-  - Hero Section z mocnym hasłem:
-    - "Bezpieczeństwo IT dla Nowoczesnych Placówek"
-    - Liczby: 500+ audytów, 200+ placówek, 10+ lat doświadczenia
+Dodałem również sekcję z opiniami klientów oraz formularz kontaktowy. Formularz posiada podstawową walidację danych i komunikaty dla użytkownika.
 
-- **Call to Action (CTA)**
-  - Przycisk "Zamów audyt" w Hero Section
-  - Formularz kontaktowy z widocznymi polami
-  - Link "Dowiedz się więcej" dla zainteresowanych
+Strona posiada responsywny interfejs, dzięki czemu jej układ dostosowuje się do różnych rozdzielczości ekranu. Przy mniejszych ekranach zostało przygotowane osobne menu mobilne.
 
-- **Social Proof**
-  - Sekcja "Opinie Klientów" z 4 testimonialami
-  - Bezpośrednie cytaty od dyrektorów
-  - Wyświetlane doświadczenia i certyfikaty
+W projekcie zastosowałem również tryb ciemny, animacje podczas przewijania strony, płynne przewijanie do poszczególnych sekcji oraz przycisk umożliwiający szybki powrót na górę strony.
 
-- **Responsywność (Mobile First)**
-  - CSS Grid i Flexbox dla responywnego layoutu
-  - Media queries na 768px i poniżej
-  - Testowane przyciski na mobilnych urządzeniach
+Podstrony
 
-### 3. ✅ Legal & Compliance (Bezpieczeństwo i Prawo)
-Wszystkie wymagane podstrony:
-- **privacy.html** – Polityka Prywatności (RODO)
-- **terms.html** – Regulamin Serwisu
-- **cookies.html** – Polityka Cookies (2026)
-- **Footer z pełnymi danymi:**
-  - Nazwa: ELEMENTO CyberPrzedszkole
-  - Adres: ul. Leszczyńskiego 1/3, Słupsk
-  - NIP: 839-124-XX-XX
-  - Social Media linki
-  - Linki do wszystkich polityk
+Projekt zawiera również dodatkowe podstrony:
 
-### 4. ✅ Technical SEO & Performance
-- **Meta Tagi**
-  - Title: "ELEMENTO CyberPrzedszkole – Audyty IT dla Placówek Edukacyjnych"
-  - Description: Pełny, SEO-optimized
-  - Keywords: audyt IT, cyberbezpieczeństwo, RODO, ochrona danych
-  - Open Graph tags dla social media
-  - Author i Language meta tags
+Privacy Policy – informacje dotyczące prywatności i ochrony danych.
 
-- **SSL**
-  - Struktura gotowa do https:// (konieczne na produkcji)
+Terms – regulamin korzystania z serwisu.
 
-- **Szybkość ładowania**
-  - Minimalny CSS (tylko niezbędne style)
-  - JavaScript bez blokerów
-  - Przygotowane do kompresji obrazów (TinyPNG)
+Cookies – informacje dotyczące wykorzystywania plików cookies.
 
-## 📁 Struktura Plików
+Technologie
 
-```
-cyberprzedszkole/
-├── index.html          # Strona główna (Hero, About, Process, Pillars, Testimonials, Contact)
-├── privacy.html        # Polityka Prywatności (RODO)
-├── terms.html          # Regulamin Serwisu
-├── cookies.html        # Polityka Cookies
-├── style.css           # Styl CSS (CSS Variables, Dark Mode)
-├── script.js           # JavaScript (Form validation, Smooth scroll, Mobile menu)
-└── pirtrues/           # Folder na obrazy
-    ├── elementologo.png
-    └── favicon.png
-```
+HTML – struktura całej strony
+CSS – wygląd, responsywność, animacje i dark mode
+JavaScript – funkcjonalności strony, formularz, menu mobilne i animacje
+Git / GitHub – zarządzanie kodem projektu
+Vercel – wdrożenie strony online
 
-## 🎨 Paleta Kolorów
+Dodatkowo
 
-- **Primary:** #0ea5e9 (Niebieski)
-- **Secondary:** #1e40af (Granat)
-- **Accent:** #06b6d4 (Cyan)
-- **Dark (Background):** #0f172a
-- **Light (Text):** #f8fafc
-
-## 📐 Struktura HTML
-
-### Strona Główna (index.html)
-1. **Header** – Logo, Menu nawigacyjne, Links
-2. **Hero Section** – Hasło, Podhasło, CTA
-3. **About Section** – Dlaczego ELEMENTO?, Statystyki (500+, 200+, 10+)
-4. **Process Section** – 6 kroków procesu
-5. **Pillars Section** – 4 Filary Bezpieczeństwa
-6. **Testimonials Section** – Opinie Klientów
-7. **Contact Section** – Formularz + Info
-8. **Footer** – Pełne dane, Links do polityk, Social Media
-9. **Back to Top Button** – Przycisk powrotu do góry
-
-## 🔧 JavaScript (script.js)
-
-- Mobile menu toggle
-- Form validation (email, required fields)
-- Form message notifications
-- Back to Top button functionality
-- Smooth scroll dla anchor linków
-- Scroll animations (Intersection Observer)
-
-## 📱 Responsywność
-
-- **Desktop:** 1200px max-width, 3-kolumnowe gridy
-- **Tablet (1024px):** 2-kolumnowe gridy
-- **Mobile (768px):** 1-kolumnowe gridy, pełna szerokość
-
-## ✨ Wyróżniające Cechy
-
-1. **CSS Variables** – Łatwe dostosowywanie kolorów i spacingu
-2. **Dark Mode by Default** – Profesjonalny wygląd
-3. **Accessibility** – aria-labels, semantic HTML
-4. **Performance** – Minimalny CSS, brak zbędnych JS
-5. **SEO Ready** – Pełne meta tagi, Open Graph, strukturalne headery
-6. **Legal Compliant** – 3 podstrony z pełnym legal stack
-
-## 🚀 Kolejne Kroki
-
-1. Dodaj plik `favicon.png` do folderu `pirtrues/`
-2. Zainstaluj certyfikat SSL (https://)
-3. Skonfiguruj email backend dla formularza (np. SendGrid, Mailgun)
-4. Optymalizuj obrazy (TinyPNG)
-5. Wdróż analitykę (Google Analytics)
-6. Ustawić monitoring 24/7 (wymienione w sekcji Kontakt)
-
-## 📞 Dane Kontaktowe
-
-- Email: audyt@cyberprzedszkole.com
-- Telefon: +48 505 421 838
-- Adres: ul. Leszczyńskiego 1/3, Słupsk
-- NIP: 839-124-XX-XX
-
----
-
-**Wydanie:** Marzec 2026  
-**Status:** ✅ Spełnia wszystkie wymagania Checklesty ELEMENTO
+W projekcie zadbałem również o podstawy SEO, odpowiednie meta tagi, Open Graph, favicon oraz elementy poprawiające dostępność strony.
